@@ -37,9 +37,9 @@ export default function Main() {
 		setRecipeShown((prevShown) => !prevShown);
 	}
 
-	const ingredientsListItems = ingredients.map((ingredient) => (
-		<li key={ingredient}>{ingredient}</li>
-	));
+	// const ingredientsListItems = ingredients.map((ingredient) => (
+	// 	<li key={ingredient}>{ingredient}</li>
+	// ));
 
 	function addIngredient(formData) {
 		const newIngredient = formData.get('ingredient');
@@ -60,8 +60,11 @@ export default function Main() {
 			{ingredients.length > 0 && (
 				<section>
 					<h2>Ingredients on hand:</h2>
-					<IngredientsList ingredients={ingredients} />
-					{ingredients.length > 3 && (
+					<IngredientsList
+						ingredients={ingredients}
+						recipeShown={toggleRecipeShown}
+					/>
+					{/* {ingredients.length > 3 && (
 						<div className='get-recipe-container'>
 							<div>
 								<h3>Ready for a recipe?</h3>
@@ -69,7 +72,7 @@ export default function Main() {
 							</div>
 							<button onClick={toggleRecipeShown}>Get a recipe</button>
 						</div>
-					)}
+					)} */}
 				</section>
 			)}
 			{recipeShown && <ClaudeRecipe />}
