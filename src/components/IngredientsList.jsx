@@ -1,6 +1,6 @@
 import React from 'react';
 
-function IngredientsList({ ingredients, recipeShown }) {
+function IngredientsList({ ingredients, fetchRecipe }) {
 	const ingredientsListItems = ingredients.map((ingredient) => (
 		<li key={ingredient}>{ingredient}</li>
 	));
@@ -16,7 +16,7 @@ function IngredientsList({ ingredients, recipeShown }) {
 							<h3>Ready for a recipe?</h3>
 							<p>Generate a recipe from your list of ingredients.</p>
 						</div>
-						<button onClick={recipeShown}>Get a recipe</button>
+						<button onClick={fetchRecipe}>Get a recipe</button>
 					</div>
 				)}
 			</ul>

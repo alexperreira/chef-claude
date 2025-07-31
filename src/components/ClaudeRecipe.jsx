@@ -1,8 +1,8 @@
-function ClaudeRecipe() {
+function ClaudeRecipe({ recipe }) {
 	return (
-		// {recipeShown && (
 		<section>
-			<h2>Chef Claude Recommends:</h2>
+			{recipe}
+			{/* <h2>Chef Claude Recommends:</h2>
 			<article className='suggested-recipe-container' aria-live='polite'>
 				<p>
 					Based on the ingredients you have available, I would recommend making
@@ -57,9 +57,8 @@ function ClaudeRecipe() {
 						cheese if desired.
 					</li>
 				</ol>
-			</article>
+			</article> */}
 		</section>
-		// )}
 	);
 }
 
