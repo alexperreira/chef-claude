@@ -57,7 +57,6 @@ export default function Main() {
 			</form>
 			{ingredients.length > 0 && (
 				<section>
-					<h2>Ingredients on hand:</h2>
 					<IngredientsList
 						ingredients={ingredients}
 						fetchRecipe={fetchRecipe}
