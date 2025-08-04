@@ -1,25 +1,9 @@
-import { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ClaudeRecipe from './ClaudeRecipe';
 import IngredientsList from './IngredientsList';
 import { getRecipeFromChefClaude } from '../services/claudeClient';
 
 export default function Main() {
-	/**
-	 * *Challenge: Get a recipe from the AI!
-	 *
-	 * This will be a bit harder of a challenge that will require you
-	 * to think critically and synthesize the skills you've been
-	 * learning and practicing up to this point.
-	 *
-	 * *Using the `getRecipeFromChefClaude`, make it so that when the user
-	 * *clicks "Get a recipe", the text response from the AI is displayed
-	 * *in the <ClaudeRecipe> component.
-	 *
-	 * For now, just have it render the raw markdown that the AI returns,
-	 * don't worry about making it look nice yet. (We're going to use a
-	 * package that will render the markdown for us soon.)
-	 */
-
 	const [ingredients, setIngredients] = useState([
 		'all the main spices',
 		'pasta',
@@ -27,12 +11,14 @@ export default function Main() {
 		'tomato paste',
 	]);
 
-	// const [recipeShown, setRecipeShown] = useState(false);
-
-	// function toggleRecipeShown() {
-	// 	setRecipeShown((prevShown) => getRecipeFromChefClaude(prevShown));
-	// }
 	const [recipe, setRecipe] = useState(null);
+	const recipeSection = useRef(null);
+
+	useEffect(() => {
+		if (recipe !== '' && recipeSection.current !== null) {
+			recipeSection.current.scrollIntoView({ behavior: 'smooth' });
+		}
+	}, [recipe]);
 
 	async function fetchRecipe() {
 		const response = await getRecipeFromChefClaude(ingredients);
@@ -58,6 +44,7 @@ export default function Main() {
 			{ingredients.length > 0 && (
 				<section>
 					<IngredientsList
+						ref={recipeSection}
 						ingredients={ingredients}
 						fetchRecipe={fetchRecipe}
 					/>

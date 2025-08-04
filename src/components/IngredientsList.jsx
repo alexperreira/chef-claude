@@ -1,6 +1,6 @@
 import React from 'react';
 
-function IngredientsList({ ingredients, fetchRecipe }) {
+function IngredientsList({ ingredients, fetchRecipe, ref }) {
 	const ingredientsListItems = ingredients.map((ingredient) => (
 		<li key={ingredient}>{ingredient}</li>
 	));
@@ -12,7 +12,7 @@ function IngredientsList({ ingredients, fetchRecipe }) {
 				{ingredientsListItems}
 				{ingredients.length > 3 && (
 					<div className='get-recipe-container'>
-						<div>
+						<div ref={ref}>
 							<h3>Ready for a recipe?</h3>
 							<p>Generate a recipe from your list of ingredients.</p>
 						</div>

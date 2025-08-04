@@ -2,7 +2,7 @@ import Markdown from 'react-markdown';
 
 function ClaudeRecipe({ recipe }) {
 	return (
-		<section>
+		<section className='suggested-recipe-container'>
 			<Markdown>{recipe}</Markdown>
 			{/* <h2>Chef Claude Recommends:</h2>
 			<article className='suggested-recipe-container' aria-live='polite'>
